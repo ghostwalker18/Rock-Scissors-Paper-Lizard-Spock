@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Game Preference -->
+    <string-array name="points_entries">
+        <item>1 очко</item>
+        <item>2 очка</item>
+        <item>3 очка</item>
+    </string-array>
+</resources>

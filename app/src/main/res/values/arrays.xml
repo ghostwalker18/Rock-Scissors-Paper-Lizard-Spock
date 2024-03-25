@@ -1,0 +1,14 @@
+<resources>
+    <!-- Game Preference -->
+    <string-array name="points_entries">
+        <item>1 point</item>
+        <item>2 points</item>
+        <item>3 points</item>
+    </string-array>
+
+    <string-array name="points_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>-array>
+</resources>

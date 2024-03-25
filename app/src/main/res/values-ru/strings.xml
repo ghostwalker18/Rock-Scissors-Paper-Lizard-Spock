@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Камень, ножницы, бумага!</string>
+    <string name="settings_activity_label">Настройки</string>
+    <string name="info_activity_label">Справка</string>
+    <string name="score">Счет:</string>
+    <string name="action_settings">Настройки</string>
+    <string name="game_settings">Игра</string>
+    <string name="number_of_points">Количество очков до победы</string>
+    <string name="player_won">Вы выиграли!</string>
+    <string name="computer_won">Вы проиграли..</string>
+    <string name="computer"> Компьютер</string>
+    <string name="you">Вы</string>
+    <string name="draw">Ничья.</string>
+    <string name="game_over">Игра окончена, победитель </string>
+</resources>
