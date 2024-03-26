@@ -26,9 +26,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
     private Random AI = new Random();
     private int[][] gameMatrix = new int[][]{
-            {0, -1, 1},
-            {1, 0, -1},
-            {-1, 1, 0}};
+            {0, 1, -1, 1, -1},
+            {-1, 0, 1, 1, -1},
+            {1, -1, 0, -1, 1},
+            {-1, -1, 1, 0, 1},
+            {1, 1, -1, -1, 0}
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(myToolbar);
         playerScoreTextView = findViewById(R.id.playerScoreTextView);
         computerScoreTextView = findViewById(R.id.computerScoreTextView);
-        ImageButton stoneButton = (ImageButton)findViewById(R.id.stoneButton);
-        stoneButton.setOnClickListener(this);
-        ImageButton scissorsButton = (ImageButton)findViewById(R.id.scissorsButton);
-        scissorsButton.setOnClickListener(this);
-        ImageButton paperButton = (ImageButton)findViewById(R.id.paperButton);
-        paperButton.setOnClickListener(this);
+
+        findViewById(R.id.stoneButton).setOnClickListener(this);
+        findViewById(R.id.scissorsButton).setOnClickListener(this);
+        findViewById(R.id.paperButton).setOnClickListener(this);
+        findViewById(R.id.lizardButton).setOnClickListener(this);
+        findViewById(R.id.spokButton).setOnClickListener(this);
+
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         preferenceChangeListener = (sharedPreferences, s) -> {
             if(s.equals("pointsNumber")){
@@ -89,8 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.paperButton:
                 playerStep = 2;
                 break;
+            case R.id.lizardButton:
+                playerStep = 3;
+                break;
+            case R.id.spokButton:
+                playerStep = 4;
+                break;
         }
-        int computerStep = AI.nextInt(3);
+        int computerStep = AI.nextInt(5);
         int result = gameMatrix[playerStep][computerStep];
         switch (result){
             case -1:
