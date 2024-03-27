@@ -1,4 +1,4 @@
-package com.example.lab2;
+package com.ghostwalker18.RSPLS;
 
 import org.junit.Test;
 

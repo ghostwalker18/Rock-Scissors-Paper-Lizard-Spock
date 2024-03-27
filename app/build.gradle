@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.lab2'
+    namespace 'com.ghostwalker18.RSPLS'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.lab2"
+        applicationId "com.ghostwalker18.RSPLS"
         minSdk 24
         targetSdk 33
         versionCode 1

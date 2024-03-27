@@ -18,13 +18,13 @@
             android:label="@string/settings_activity_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.lab2.MainActivity" />
+                android:value="com.ghostwalker18.RSPLS.MainActivity" />
         </activity>
         <activity android:name=".InfoActivity"
             android:label="@string/info_activity_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.lab2.MainActivity" />
+                android:value="com.ghostwalker18.RSPLS.MainActivity" />
         </activity>
         <activity
             android:name=".MainActivity"
