@@ -4,8 +4,14 @@
         <ListPreference
             app:defaultValue="3"
             app:key="pointsNumber"
-            app:title="@string/number_of_points"
+            app:title="@string/option_number_of_points"
             app:entries="@array/points_entries"
             app:entryValues="@array/points_values"/>
+        <ListPreference
+            app:defaultValue="AI"
+            app:key="gameMode"
+            app:title="@string/option_game_mode"
+            app:entries="@array/game_mode_entries"
+            app:entryValues="@array/game_mode_values"/>
     </PreferenceCategory>
 </PreferenceScreen>

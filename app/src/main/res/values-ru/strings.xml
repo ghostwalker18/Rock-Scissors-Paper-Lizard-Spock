@@ -6,7 +6,8 @@
     <string name="score">Счет:</string>
     <string name="action_settings">Настройки</string>
     <string name="game_settings">Игра</string>
-    <string name="number_of_points">Количество очков до победы</string>
+    <string name="option_number_of_points">Количество очков до победы</string>
+    <string name="option_game_mode">Режим игры</string>
     <string name="player_won">Вы выиграли!</string>
     <string name="computer_won">Вы проиграли..</string>
     <string name="computer"> Компьютер</string>

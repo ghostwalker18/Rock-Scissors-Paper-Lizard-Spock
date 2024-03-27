@@ -10,5 +10,17 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
-    </string-array>-array>
+    </string-array>
+
+    <string-array name="game_mode_entries">
+        <item>1 player vs AI</item>
+        <item>2 players on 1 device</item>
+        <item>2 players on 2 devices</item>
+    </string-array>
+
+    <string-array name="game_mode_values">
+        <item>AI</item>
+        <item>local</item>
+        <item>BT</item>
+    </string-array>
 </resources>

@@ -6,4 +6,10 @@
         <item>2 очка</item>
         <item>3 очка</item>
     </string-array>
+
+    <string-array name="game_mode_entries">
+        <item>1 игрок против AI</item>
+        <item>2 игрока на 1 устройстве</item>
+        <item>2 игрока на 2 устройствах</item>
+    </string-array>
 </resources>
