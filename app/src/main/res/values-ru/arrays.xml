@@ -12,4 +12,16 @@
         <item>2 игрока на 1 устройстве</item>
         <item>2 игрока на 2 устройствах</item>
     </string-array>
+
+    <string-array name="language_entries">
+        <item>Система</item>
+        <item>Английский</item>
+        <item>Русский</item>
+    </string-array>
+
+    <string-array name="theme_entries">
+        <item>Система</item>
+        <item>Темная</item>
+        <item>Светлая</item>
+    </string-array>
 </resources>

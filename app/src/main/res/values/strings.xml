@@ -13,4 +13,7 @@
     <string name="you">You</string>
     <string name="draw">Draw.</string>
     <string name="game_over">Game over, winner </string>
+    <string name="app_settings">App</string>
+    <string name="option_language" />
+    <string name="option_theme">Theme</string>
 </resources>

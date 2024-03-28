@@ -7,11 +7,28 @@
             app:title="@string/option_number_of_points"
             app:entries="@array/points_entries"
             app:entryValues="@array/points_values"/>
+
         <ListPreference
             app:defaultValue="AI"
             app:key="gameMode"
             app:title="@string/option_game_mode"
             app:entries="@array/game_mode_entries"
             app:entryValues="@array/game_mode_values"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/app_settings">
+        <ListPreference
+            app:defaultValue="system"
+            app:key="language"
+            app:title="@string/option_language"
+            app:entries="@array/language_entries"
+            app:entryValues="@array/language_values"/>
+
+        <ListPreference
+            app:defaultValue="system"
+            app:key="theme"
+            app:title="@string/option_theme"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -23,4 +23,28 @@
         <item>local</item>
         <item>BT</item>
     </string-array>
+
+    <string-array name="language_entries">
+        <item>System</item>
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+
+    <string-array name="theme_entries">
+        <item>System</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>system</item>
+        <item>eng</item>
+        <item>ru</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>system</item>
+        <item>night</item>
+        <item>day</item>
+    </string-array>
 </resources>

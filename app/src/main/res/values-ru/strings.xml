@@ -14,4 +14,7 @@
     <string name="you">Вы</string>
     <string name="draw">Ничья.</string>
     <string name="game_over">Игра окончена, победитель </string>
+    <string name="app_settings">Приложение</string>
+    <string name="option_language">Язык</string>
+    <string name="option_theme">Тема</string>
 </resources>
