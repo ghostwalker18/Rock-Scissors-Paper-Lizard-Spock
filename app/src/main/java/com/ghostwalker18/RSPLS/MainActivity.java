@@ -13,31 +13,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private int computerScore;
-    private TextView computerScoreTextView;
-    private int playerScore;
-    private TextView playerScoreTextView;
-    private int stepsLimit = 3;
+public class MainActivity extends AppCompatActivity{
     private SharedPreferences prefs;
+    private GameStrategy gameStrategy;
     private SharedPreferences.
             OnSharedPreferenceChangeListener preferenceChangeListener = (shPrefs, s) -> {
-        if(s.equals("pointsNumber")){
-            stepsLimit = Integer.parseInt(shPrefs.getString(s, "3"));
-            computerScore = 0;
-            computerScoreTextView.setText("0");
-            playerScore = 0;
-            playerScoreTextView.setText("0");
+        switch (s){
+            case "pointsNumber":
+                int stepsLimit = Integer.parseInt(shPrefs.getString(s, "3"));
+                gameStrategy.setStepsLimit(stepsLimit);
+                gameStrategy.restart();
+                break;
+            case "gameMode":
+                String gameMode = shPrefs.getString(s, "AI");
+                switch (gameMode){
+                    case "AI":
+                        gameStrategy = new OnePlayerStrategy(MainActivity.this);
+                        break;
+                    case "local":
+                        gameStrategy = new TwoPlayersLocalStrategy(MainActivity.this);
+                        break;
+                    case "BT":
+                        gameStrategy = new TwoPlayersRemoteStrategy(MainActivity.this);
+                        break;
+                }
         }
-    };
-    private Random AI = new Random();
-    private int[][] gameMatrix = new int[][]{
-            {0, 1, -1, 1, -1},
-            {-1, 0, 1, 1, -1},
-            {1, -1, 0, -1, 1},
-            {-1, -1, 1, 0, 1},
-            {1, 1, -1, -1, 0}
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        playerScoreTextView = findViewById(R.id.playerScoreTextView);
-        computerScoreTextView = findViewById(R.id.computerScoreTextView);
+        gameStrategy = new OnePlayerStrategy(this);
 
-        findViewById(R.id.stoneButton).setOnClickListener(this);
-        findViewById(R.id.scissorsButton).setOnClickListener(this);
-        findViewById(R.id.paperButton).setOnClickListener(this);
-        findViewById(R.id.lizardButton).setOnClickListener(this);
-        findViewById(R.id.spokButton).setOnClickListener(this);
+        findViewById(R.id.stoneButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.scissorsButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.paperButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.lizardButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.spokButton).setOnClickListener(gameStrategy);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
@@ -76,56 +75,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         };
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onClick(View view) {
-        int playerStep = 0;
-        CharSequence message = "0";
-        switch (view.getId()){
-            case R.id.stoneButton:
-                playerStep = 0;
-                break;
-            case R.id.scissorsButton:
-                playerStep = 1;
-                break;
-            case R.id.paperButton:
-                playerStep = 2;
-                break;
-            case R.id.lizardButton:
-                playerStep = 3;
-                break;
-            case R.id.spokButton:
-                playerStep = 4;
-                break;
-        }
-        int computerStep = AI.nextInt(5);
-        int result = gameMatrix[playerStep][computerStep];
-        switch (result){
-            case -1:
-                computerScore++;
-                message = getText(R.string.computer_won);
-                break;
-            case 1:
-                playerScore++;
-                message = getText(R.string.player_won);
-                break;
-            case 0:
-                message = getText(R.string.draw);
-                break;
-        };
-        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-        toast.show();
-        playerScoreTextView.setText(String.valueOf(playerScore));
-        computerScoreTextView.setText(String.valueOf(computerScore));
-        if(playerScore == stepsLimit || computerScore == stepsLimit){
-            String finalMessage =  getText(R.string.game_over).toString() + " : " + (playerScore > computerScore ?  getText(R.string.you).toString() : getText(R.string.computer).toString());
-            Toast toast1 = Toast.makeText(getApplicationContext(), finalMessage, Toast.LENGTH_SHORT);
-            computerScore = 0;
-            computerScoreTextView.setText("0");
-            playerScore = 0;
-            playerScoreTextView.setText("0");
-            toast1.show();
-        }
     }
 }
