@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int computerScore;
     private TextView computerScoreTextView;
-
     private int playerScore;
     private TextView playerScoreTextView;
     private int stepsLimit = 3;
@@ -44,8 +43,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
+
         playerScoreTextView = findViewById(R.id.playerScoreTextView);
         computerScoreTextView = findViewById(R.id.computerScoreTextView);
 
