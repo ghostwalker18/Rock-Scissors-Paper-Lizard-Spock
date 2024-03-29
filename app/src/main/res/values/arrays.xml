@@ -38,7 +38,7 @@
 
     <string-array name="language_values">
         <item>system</item>
-        <item>eng</item>
+        <item>en</item>
         <item>ru</item>
     </string-array>
 

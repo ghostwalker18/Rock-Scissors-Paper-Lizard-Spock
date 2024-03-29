@@ -22,7 +22,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView playerScoreTextView;
     private int stepsLimit = 3;
     private SharedPreferences prefs;
-    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
+    private SharedPreferences.
+            OnSharedPreferenceChangeListener preferenceChangeListener = (shPrefs, s) -> {
+        if(s.equals("pointsNumber")){
+            stepsLimit = Integer.parseInt(shPrefs.getString(s, "3"));
+            computerScore = 0;
+            computerScoreTextView.setText("0");
+            playerScore = 0;
+            playerScoreTextView.setText("0");
+        }
+    };
     private Random AI = new Random();
     private int[][] gameMatrix = new int[][]{
             {0, 1, -1, 1, -1},
@@ -47,15 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.spokButton).setOnClickListener(this);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        preferenceChangeListener = (sharedPreferences, s) -> {
-            if(s.equals("pointsNumber")){
-                stepsLimit = Integer.parseInt(sharedPreferences.getString(s, "3"));
-                computerScore = 0;
-                computerScoreTextView.setText("0");
-                playerScore = 0;
-                playerScoreTextView.setText("0");
-            }
-        };
         prefs.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
     }
 
