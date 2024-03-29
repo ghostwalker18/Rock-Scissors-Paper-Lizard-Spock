@@ -26,17 +26,8 @@ public class MainActivity extends AppCompatActivity{
                 break;
             case "gameMode":
                 String gameMode = shPrefs.getString(s, "AI");
-                switch (gameMode){
-                    case "AI":
-                        gameStrategy = new OnePlayerStrategy(MainActivity.this);
-                        break;
-                    case "local":
-                        gameStrategy = new TwoPlayersLocalStrategy(MainActivity.this);
-                        break;
-                    case "BT":
-                        gameStrategy = new TwoPlayersRemoteStrategy(MainActivity.this);
-                        break;
-                }
+                gameStrategy = getStrategy(prefs);
+                registerStrategy(gameStrategy);
         }
     };
     @Override
@@ -46,16 +37,11 @@ public class MainActivity extends AppCompatActivity{
         Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        gameStrategy = new OnePlayerStrategy(this);
-
-        findViewById(R.id.stoneButton).setOnClickListener(gameStrategy);
-        findViewById(R.id.scissorsButton).setOnClickListener(gameStrategy);
-        findViewById(R.id.paperButton).setOnClickListener(gameStrategy);
-        findViewById(R.id.lizardButton).setOnClickListener(gameStrategy);
-        findViewById(R.id.spokButton).setOnClickListener(gameStrategy);
-
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+
+        gameStrategy = getStrategy(prefs);
+        registerStrategy(gameStrategy);
     }
 
     @Override
@@ -75,5 +61,27 @@ public class MainActivity extends AppCompatActivity{
                 break;
         };
         return super.onOptionsItemSelected(item);
+    }
+
+    private void registerStrategy(GameStrategy gameStrategy){
+        findViewById(R.id.stoneButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.scissorsButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.paperButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.lizardButton).setOnClickListener(gameStrategy);
+        findViewById(R.id.spokButton).setOnClickListener(gameStrategy);
+    }
+
+    private GameStrategy getStrategy(SharedPreferences prefs){
+        String gameMode = prefs.getString("gameMode", "AI");
+        switch (gameMode){
+            case "AI":
+                return new OnePlayerStrategy(MainActivity.this);
+            case "local":
+                return new TwoPlayersLocalStrategy(MainActivity.this);
+            case "BT":
+                return new TwoPlayersRemoteStrategy(MainActivity.this);
+            default:
+                return null;
+        }
     }
 }
