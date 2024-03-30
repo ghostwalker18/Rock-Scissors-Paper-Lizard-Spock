@@ -40,7 +40,7 @@ public class RSPLSApp extends Application implements SharedPreferences
       sharedPreferences.registerOnSharedPreferenceChangeListener(this);
    }
 
-   public void setLocale(String localeCode){
+   private void setLocale(String localeCode){
       Locale locale;
       if(localeCode.equals("system"))
          locale = Resources.getSystem().getConfiguration().getLocales().get(0);
@@ -49,7 +49,7 @@ public class RSPLSApp extends Application implements SharedPreferences
       AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(locale));
    }
 
-   public void setTheme(String theme){
+   private void setTheme(String theme){
       switch (theme) {
          case "system":
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);

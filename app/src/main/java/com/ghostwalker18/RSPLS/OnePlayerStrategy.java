@@ -12,13 +12,15 @@ public class OnePlayerStrategy extends GameStrategy {
     public OnePlayerStrategy(Activity context) {
         super(context);
     }
+
     @Override
     public void restart() {
         playerScore = 0;
-        playerScoreTextView.setText("0");
+        playerOneScoreTextView.setText("0");
         computerScore = 0;
-        computerScoreTextView.setText("0");
+        playerTwoScoreTextView.setText("0");
     }
+
     @Override
     public void onClick(View view) {
         int playerStep = 0;
@@ -57,16 +59,16 @@ public class OnePlayerStrategy extends GameStrategy {
         };
         Toast toast = Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
-        playerScoreTextView.setText(String.valueOf(playerScore));
-        computerScoreTextView.setText(String.valueOf(computerScore));
+        playerOneScoreTextView.setText(String.valueOf(playerScore));
+        playerTwoScoreTextView.setText(String.valueOf(computerScore));
         if(playerScore == stepsLimit || computerScore == stepsLimit){
             String finalMessage =  context.getText(R.string.game_over).toString() + " : " + (playerScore > computerScore
                     ?  context.getText(R.string.you).toString() : context.getText(R.string.computer).toString());
             Toast toast1 = Toast.makeText(context.getApplicationContext(), finalMessage, Toast.LENGTH_SHORT);
             computerScore = 0;
-            computerScoreTextView.setText("0");
+            playerTwoScoreTextView.setText("0");
             playerScore = 0;
-            playerScoreTextView.setText("0");
+            playerOneScoreTextView.setText("0");
             toast1.show();
         }
     }
