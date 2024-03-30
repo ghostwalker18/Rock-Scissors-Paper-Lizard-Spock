@@ -3,6 +3,7 @@
     <string name="app_name">Камень, ножницы, бумага!</string>
     <string name="settings_activity_label">Настройки</string>
     <string name="info_activity_label">Справка</string>
+    <string name="exit_label">Выход</string>
     <string name="score">Счет:</string>
     <string name="action_settings">Настройки</string>
     <string name="game_settings">Игра</string>

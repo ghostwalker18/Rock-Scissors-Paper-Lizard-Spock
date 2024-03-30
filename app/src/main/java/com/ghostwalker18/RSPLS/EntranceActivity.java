@@ -23,5 +23,8 @@ public class EntranceActivity extends AppCompatActivity {
         findViewById(R.id.faqButton).setOnClickListener(view -> {
             startActivity(new Intent(this, InfoActivity.class));
         });
+        findViewById(R.id.exitButton).setOnClickListener(view -> {
+            finish();
+        });
     }
 }
