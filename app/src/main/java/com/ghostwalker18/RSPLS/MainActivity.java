@@ -13,23 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
     private SharedPreferences prefs;
     private GameStrategy gameStrategy;
-    private SharedPreferences.
-            OnSharedPreferenceChangeListener preferenceChangeListener = (shPrefs, s) -> {
-        switch (s){
-            case "pointsNumber":
-                int stepsLimit = Integer.parseInt(shPrefs.getString(s, "3"));
-                gameStrategy.setStepsLimit(stepsLimit);
-                gameStrategy.restart();
-                break;
-            case "gameMode":
-                String gameMode = shPrefs.getString(s, "AI");
-                gameStrategy = getStrategy(prefs);
-                registerStrategy(gameStrategy);
-        }
-    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(myToolbar);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.registerOnSharedPreferenceChangeListener(preferenceChangeListener);
+        prefs.registerOnSharedPreferenceChangeListener(this);
 
         gameStrategy = getStrategy(prefs);
         registerStrategy(gameStrategy);
@@ -61,6 +48,20 @@ public class MainActivity extends AppCompatActivity{
                 break;
         };
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        switch (key){
+            case "pointsNumber":
+                int stepsLimit = Integer.parseInt(sharedPreferences.getString(key, "3"));
+                gameStrategy.setStepsLimit(stepsLimit);
+                gameStrategy.restart();
+                break;
+            case "gameMode":
+                gameStrategy = getStrategy(prefs);
+                registerStrategy(gameStrategy);
+        }
     }
 
     private void registerStrategy(GameStrategy gameStrategy){
