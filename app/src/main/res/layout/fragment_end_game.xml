@@ -20,11 +20,13 @@
             android:text="@string/game_over"/>
         <TextView
             android:id="@+id/winnerTextView"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""/>
         <TextView
             android:id="@+id/scoreTextView"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

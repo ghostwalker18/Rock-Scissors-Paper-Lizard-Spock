@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-class EndGameFragment extends Fragment implements View.OnClickListener {
+public class EndGameFragment extends Fragment implements View.OnClickListener {
    private String winner;
    private int playerOneScore;
    private int playerTwoScore;

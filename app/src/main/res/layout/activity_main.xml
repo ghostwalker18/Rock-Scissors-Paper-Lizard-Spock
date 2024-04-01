@@ -15,6 +15,11 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
+    <FrameLayout
+        android:id="@+id/endGameFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

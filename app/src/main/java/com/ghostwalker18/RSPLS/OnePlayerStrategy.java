@@ -1,6 +1,5 @@
 package com.ghostwalker18.RSPLS;
 
-import android.app.Activity;
 import android.view.View;
 import android.widget.Toast;
 import java.util.Random;
@@ -9,7 +8,7 @@ public class OnePlayerStrategy extends GameStrategy {
     private Random AI = new Random();
     private int playerScore = 0;
     private int computerScore = 0;
-    public OnePlayerStrategy(Activity context) {
+    public OnePlayerStrategy(MainActivity context) {
         super(context);
     }
 
@@ -63,7 +62,9 @@ public class OnePlayerStrategy extends GameStrategy {
         playerTwoScoreTextView.setText(String.valueOf(computerScore));
         if(playerScore == stepsLimit || computerScore == stepsLimit){
             winner = (playerScore > computerScore) ?  context.getText(R.string.you).toString() : context.getText(R.string.computer).toString();
-            showWinner();
+            context.showWinner(winner, playerScore, computerScore);
         };
     }
+
+
 }

@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity
         endGameFragment.setArguments(args);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(endGameFragment, "endGameFragment")
+                .replace(R.id.endGameFragment, endGameFragment)
+                .addToBackStack("endGameShowed")
                 .commit();
     }
 
@@ -114,6 +115,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             case "replay":
                 gameStrategy.restart();
+                getSupportFragmentManager()
+                        .popBackStack();
                 break;
         }
     }
