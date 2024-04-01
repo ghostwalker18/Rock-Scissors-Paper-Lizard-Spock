@@ -16,11 +16,11 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class InstrumentedTest {
+public class AppIsAvailableToOpen {
     @Test
-    public void useAppContext() {
+    public void openApp() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.lab2", appContext.getPackageName());
+        assertEquals("com.ghostwalker18.RSPLS", appContext.getPackageName());
     }
 }

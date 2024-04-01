@@ -1,19 +1,26 @@
 package com.ghostwalker18.RSPLS;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class MainActivity extends AppCompatActivity
+        implements SharedPreferences.OnSharedPreferenceChangeListener, EndGameFragment.OnNavigationButtonClickListener {
     private SharedPreferences prefs;
     private GameStrategy gameStrategy;
 
@@ -83,6 +90,31 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 return new TwoPlayersRemoteStrategy(MainActivity.this);
             default:
                 return null;
+        }
+    }
+
+    public void showWinner(String winner, int playerOneScore, int playerTwoScore){
+        Bundle args = new Bundle();
+        args.putString("winner", winner);
+        args.putInt("playerOneScore", playerOneScore);
+        args.putInt("playerTwoScore", playerTwoScore);
+        EndGameFragment endGameFragment = new EndGameFragment();
+        endGameFragment.setArguments(args);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(endGameFragment, "endGameFragment")
+                .commit();
+    }
+
+    @Override
+    public void onNavigationButtonClicked(String action) {
+        switch (action){
+            case "exit":
+                this.finish();
+                break;
+            case "replay":
+                gameStrategy.restart();
+                break;
         }
     }
 }
