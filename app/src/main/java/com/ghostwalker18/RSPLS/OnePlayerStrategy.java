@@ -60,8 +60,7 @@ public class OnePlayerStrategy extends GameStrategy {
                 break;
         };
 
-        Toast toast = Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_SHORT);
-        toast.show();
+        context.showRoundWinner(message);
 
         playerOneScoreTextView.setText(String.valueOf(playerScore));
         playerTwoScoreTextView.setText(String.valueOf(computerScore));

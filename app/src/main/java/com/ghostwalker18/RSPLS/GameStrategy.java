@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public abstract class GameStrategy implements View.OnClickListener {
-   protected final MainActivity context;
+   protected MainActivity context;
    protected int stepsLimit = 3;
    protected int winnerStringId;
    protected final TextView playerOneScoreTextView;

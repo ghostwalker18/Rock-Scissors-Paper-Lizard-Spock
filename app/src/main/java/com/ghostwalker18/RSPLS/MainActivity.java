@@ -9,12 +9,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener, EndGameFragment.OnNavigationButtonClickListener {
     private SharedPreferences prefs;
     private GameStrategy gameStrategy;
     private EndGameFragment endGameFragment = null;
+
+    private Toast notification = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,13 @@ public class MainActivity extends AppCompatActivity
         if(endGameFragment != null){
             findViewById(R.id.gameField).setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(notification != null)
+            notification.cancel();
     }
 
     @Override
@@ -106,6 +116,13 @@ public class MainActivity extends AppCompatActivity
                 .add(R.id.gameContainer, endGameFragment)
                 .commit();
         findViewById(R.id.gameField).setVisibility(View.GONE);
+    }
+
+    public void showRoundWinner(CharSequence message){
+        if(notification != null)
+            notification.cancel();
+        notification = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        notification.show();
     }
 
     @Override

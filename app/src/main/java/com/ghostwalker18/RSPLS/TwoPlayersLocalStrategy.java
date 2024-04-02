@@ -73,8 +73,7 @@ class TwoPlayersLocalStrategy extends GameStrategy {
                break;
          };
 
-         Toast toast = Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_SHORT);
-         toast.show();
+         context.showRoundWinner(message);
 
          playerOneScoreTextView.setText(String.valueOf(playerOneScore));
          playerTwoScoreTextView.setText(String.valueOf(playerTwoScore));
