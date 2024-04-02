@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class EndGameFragment extends Fragment implements View.OnClickListener {
+
    private String winner;
    private int playerOneScore;
    private int playerTwoScore;
@@ -38,7 +37,7 @@ public class EndGameFragment extends Fragment implements View.OnClickListener {
    @Override
    public void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      winner = getArguments().getString("winner");
+      winner = getString(getArguments().getInt("winner"));
       playerOneScore = getArguments().getInt("playerOneScore");
       playerTwoScore = getArguments().getInt("playerTwoScore");
    }

@@ -61,8 +61,8 @@ public class OnePlayerStrategy extends GameStrategy {
         playerOneScoreTextView.setText(String.valueOf(playerScore));
         playerTwoScoreTextView.setText(String.valueOf(computerScore));
         if(playerScore == stepsLimit || computerScore == stepsLimit){
-            winner = (playerScore > computerScore) ?  context.getText(R.string.you).toString() : context.getText(R.string.computer).toString();
-            context.showWinner(winner, playerScore, computerScore);
+            winnerStringId = (playerScore > computerScore) ?  R.string.you : R.string.computer;
+            context.showWinner(winnerStringId, playerScore, computerScore);
         };
     }
 

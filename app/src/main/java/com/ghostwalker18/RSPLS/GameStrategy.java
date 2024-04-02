@@ -6,7 +6,7 @@ import android.widget.TextView;
 public abstract class GameStrategy implements View.OnClickListener {
    protected final MainActivity context;
    protected int stepsLimit = 3;
-   protected String winner = "";
+   protected int winnerStringId;
    protected final TextView playerOneScoreTextView;
    protected final TextView playerTwoScoreTextView;
    protected int[][] gameMatrix = new int[][]{

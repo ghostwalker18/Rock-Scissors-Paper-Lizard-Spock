@@ -17,16 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textSize="@dimen/text_size_medium"
             android:text="@string/game_over"/>
         <TextView
             android:id="@+id/winnerTextView"
             android:textAlignment="center"
+            android:textSize="@dimen/text_size_big"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""/>
         <TextView
             android:id="@+id/scoreTextView"
             android:textAlignment="center"
+            android:textSize="@dimen/text_size_medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -36,6 +39,7 @@
         android:layout_height="wrap_content">
         <ImageButton
             android:id="@+id/replayButton"
+            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,6 +47,7 @@
         </ImageButton>
         <ImageButton
             android:id="@+id/exitButton"
+            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

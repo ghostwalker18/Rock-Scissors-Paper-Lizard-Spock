@@ -1,13 +1,9 @@
 package com.ghostwalker18.RSPLS;
 
-import android.app.Application;
-import android.content.Context;
+import android.app.Application;;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-
 import java.util.Locale;
-
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
 import androidx.preference.PreferenceManager;
@@ -15,6 +11,7 @@ import androidx.preference.PreferenceManager;
 public class RSPLSApp extends Application implements SharedPreferences
         .OnSharedPreferenceChangeListener{
    private SharedPreferences sharedPreferences;
+
    @Override
    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
       switch (key){
