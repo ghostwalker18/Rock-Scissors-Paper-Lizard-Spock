@@ -38,12 +38,13 @@ public class RSPLSApp extends Application implements SharedPreferences
    }
 
    private void setLocale(String localeCode){
-      Locale locale;
-      if(localeCode.equals("system"))
-         locale = Resources.getSystem().getConfiguration().getLocales().get(0);
+      LocaleListCompat localeListCompat;
+      if(localeCode.equals("system")){
+         localeListCompat = LocaleListCompat.getEmptyLocaleList();
+      }
       else
-         locale = new Locale(localeCode);
-      AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(locale));
+         localeListCompat = LocaleListCompat.create(new Locale(localeCode));
+      AppCompatDelegate.setApplicationLocales(localeListCompat);
    }
 
    private void setTheme(String theme){
