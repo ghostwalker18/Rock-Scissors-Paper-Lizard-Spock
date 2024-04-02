@@ -9,8 +9,12 @@
     <string name="option_number_of_points">Number of points to win</string>
     <string name="option_game_mode">Game mode</string>
     <string name="player_won">You won!</string>
+    <string name="player_one_won">Player One won!</string>
     <string name="computer_won">You lost..</string>
+    <string name="player_two_won">Player Two won!</string>
+    <string name="player_two">Player Two</string>
     <string name="computer"> Computer</string>
+    <string name="player_one">Player One</string>
     <string name="you">You</string>
     <string name="draw">Draw.</string>
     <string name="game_over">Game over, winner </string>

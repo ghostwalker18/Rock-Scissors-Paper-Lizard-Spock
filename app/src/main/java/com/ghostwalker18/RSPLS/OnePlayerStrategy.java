@@ -23,7 +23,8 @@ public class OnePlayerStrategy extends GameStrategy {
     @Override
     public void onClick(View view) {
         int playerStep = 0;
-        CharSequence message = "0";
+        CharSequence message = "";
+
         switch (view.getId()){
             case R.id.stoneButton:
                 playerStep = 0;
@@ -41,8 +42,10 @@ public class OnePlayerStrategy extends GameStrategy {
                 playerStep = 4;
                 break;
         }
+
         int computerStep = AI.nextInt(5);
         int result = gameMatrix[playerStep][computerStep];
+
         switch (result){
             case -1:
                 computerScore++;
@@ -56,15 +59,16 @@ public class OnePlayerStrategy extends GameStrategy {
                 message = context.getText(R.string.draw);
                 break;
         };
+
         Toast toast = Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_SHORT);
         toast.show();
+
         playerOneScoreTextView.setText(String.valueOf(playerScore));
         playerTwoScoreTextView.setText(String.valueOf(computerScore));
+
         if(playerScore == stepsLimit || computerScore == stepsLimit){
             winnerStringId = (playerScore > computerScore) ?  R.string.you : R.string.computer;
             context.showWinner(winnerStringId, playerScore, computerScore);
         };
     }
-
-
 }
