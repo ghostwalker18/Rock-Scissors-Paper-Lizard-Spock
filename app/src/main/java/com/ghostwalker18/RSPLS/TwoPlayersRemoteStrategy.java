@@ -1,9 +1,10 @@
 package com.ghostwalker18.RSPLS;
 
 import android.view.View;
+import androidx.annotation.NonNull;
 
 class TwoPlayersRemoteStrategy extends GameStrategy {
-   public TwoPlayersRemoteStrategy(MainActivity context) {
+   public TwoPlayersRemoteStrategy(@NonNull MainActivity context) {
       super(context);
    }
 

@@ -1,7 +1,8 @@
 package com.ghostwalker18.RSPLS;
 
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 class TwoPlayersLocalStrategy extends GameStrategy {
    private int playerOneScore = 0;
@@ -10,7 +11,7 @@ class TwoPlayersLocalStrategy extends GameStrategy {
    int playerTwoStep = 0;
    private int stepCounter = 0;
 
-   public TwoPlayersLocalStrategy(MainActivity context) {
+   public TwoPlayersLocalStrategy(@NonNull MainActivity context) {
       super(context);
    }
 

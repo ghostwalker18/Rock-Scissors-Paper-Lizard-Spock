@@ -3,6 +3,8 @@ package com.ghostwalker18.RSPLS;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 public abstract class GameStrategy implements View.OnClickListener {
    protected MainActivity context;
    protected int stepsLimit = 3;
@@ -17,7 +19,7 @@ public abstract class GameStrategy implements View.OnClickListener {
            {1, 1, -1, -1, 0}
    };
 
-   public GameStrategy(MainActivity context){
+   public GameStrategy(@NonNull MainActivity context){
       this.context = context;
       playerOneScoreTextView = context.findViewById(R.id.playerScoreTextView);
       playerTwoScoreTextView = context.findViewById(R.id.computerScoreTextView);

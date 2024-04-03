@@ -11,6 +11,9 @@
       <entry key="debug">
         <State />
       </entry>
+      <entry key="release">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

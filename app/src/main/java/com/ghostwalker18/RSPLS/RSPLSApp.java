@@ -2,7 +2,6 @@ package com.ghostwalker18.RSPLS;
 
 import android.app.Application;;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import java.util.Locale;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
