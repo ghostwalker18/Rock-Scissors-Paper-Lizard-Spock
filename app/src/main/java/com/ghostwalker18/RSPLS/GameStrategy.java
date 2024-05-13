@@ -11,6 +11,9 @@ public abstract class GameStrategy implements View.OnClickListener {
    protected int winnerStringId;
    protected final TextView playerOneScoreTextView;
    protected final TextView playerTwoScoreTextView;
+   protected enum Result{
+      Lost, Draw, Won
+   }
    protected int[][] gameMatrix = new int[][]{
            {0, 1, -1, 1, -1},
            {-1, 0, 1, 1, -1},

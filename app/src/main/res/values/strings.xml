@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Rock, Scissors, Shoot!</string>
     <string name="settings_activity_label">Settings</string>
@@ -21,4 +22,7 @@
     <string name="app_settings">App</string>
     <string name="option_language">Language</string>
     <string name="option_theme">Theme</string>
+    <string name="current_step_info">Current step now:</string>
+    <string name="player_one_figure">Player1\'s chosen figure</string>
+    <string name="player_two_figure">Player2\'s chosen figure</string>
 </resources>
