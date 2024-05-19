@@ -1,8 +1,11 @@
 package com.ghostwalker18.RSPLS;
 
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Toast;
 import java.util.Random;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public class OnePlayerStrategy extends GameStrategy {
     private Random AI = new Random();
@@ -10,6 +13,15 @@ public class OnePlayerStrategy extends GameStrategy {
     private int computerScore = 0;
     public OnePlayerStrategy(MainActivity context) {
         super(context);
+    }
+
+    @Override
+    public String getName(){
+        return context.getResources().getStringArray(R.array.game_mode_entries)[0];
+    }
+    @Override
+    public int[] getPlayersNamesIds(){
+        return new int[]{ R.string.you, R.string.computer};
     }
 
     @Override
@@ -42,25 +54,29 @@ public class OnePlayerStrategy extends GameStrategy {
                 playerStep = 4;
                 break;
         }
-
+        context.setPlayerOneFigure(stepToLogo[playerStep]);
+        context.showCurrentStep(R.string.computer);
         int computerStep = AI.nextInt(5);
-        int result = gameMatrix[playerStep][computerStep];
+        context.setPlayerTwoFigure(stepToLogo[computerStep]);
+
+        Result result = gameMatrix[playerStep][computerStep];
 
         switch (result){
-            case -1:
+            case Lost:
                 computerScore++;
                 message = context.getText(R.string.computer_won);
                 break;
-            case 1:
+            case Won:
                 playerScore++;
                 message = context.getText(R.string.player_won);
                 break;
-            case 0:
+            case Draw:
                 message = context.getText(R.string.draw);
                 break;
         };
-
+        context.showFigures();
         context.showRoundWinner(message);
+        context.showCurrentStep(R.string.you);
 
         playerOneScoreTextView.setText(String.valueOf(playerScore));
         playerTwoScoreTextView.setText(String.valueOf(computerScore));

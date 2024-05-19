@@ -4,7 +4,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-class TwoPlayersLocalStrategy extends GameStrategy {
+public class TwoPlayersLocalStrategy extends GameStrategy {
    private int playerOneScore = 0;
    private int playerTwoScore = 0;
    int playerOneStep = 0;
@@ -13,6 +13,15 @@ class TwoPlayersLocalStrategy extends GameStrategy {
 
    public TwoPlayersLocalStrategy(@NonNull MainActivity context) {
       super(context);
+   }
+
+   @Override
+   public String getName(){
+      return context.getResources().getStringArray(R.array.game_mode_entries)[1];
+   }
+   @Override
+   public int[] getPlayersNamesIds(){
+      return new int[]{R.string.player_one, R.string.player_two};
    }
 
    @Override
@@ -50,30 +59,38 @@ class TwoPlayersLocalStrategy extends GameStrategy {
             break;
       };
 
-      if(stepCounter % 2 == 1)
+      if(stepCounter % 2 == 1) {
          playerOneStep = step;
-      else
+         context.showCurrentStep(R.string.player_two);
+      }
+      else {
          playerTwoStep = step;
+         context.showCurrentStep(R.string.player_one);
+      }
 
       if(stepCounter % 2 == 0 && stepCounter > 0){
-         int result = gameMatrix[playerOneStep][playerTwoStep];
+         Result result = gameMatrix[playerOneStep][playerTwoStep];
+         context.setPlayerOneFigure(stepToLogo[playerOneStep]);
+         context.setPlayerTwoFigure(stepToLogo[playerTwoStep]);
+         //Обнуление переменных по итогам раунда
          playerOneStep = 0;
          playerTwoStep = 0;
 
          switch (result){
-            case -1:
+            case Lost:
                playerTwoScore++;
                message = context.getText(R.string.player_two_won);
                break;
-            case 1:
+            case Won:
                playerOneScore++;
                message = context.getText(R.string.player_one_won);
                break;
-            case 0:
+            case Draw:
                message = context.getText(R.string.draw);
                break;
          };
 
+         context.showFigures();
          context.showRoundWinner(message);
 
          playerOneScoreTextView.setText(String.valueOf(playerOneScore));

@@ -22,7 +22,7 @@
     <string name="app_settings">Приложение</string>
     <string name="option_language">Язык</string>
     <string name="option_theme">Тема</string>
-    <string name="current_step_info">Текущий ход</string>
+    <string name="current_step_info">Текущий ход: </string>
     <string name="player_one_figure">Фигура игрока 1</string>
     <string name="player_two_figure">Фигура игрока 2</string>
 </resources>

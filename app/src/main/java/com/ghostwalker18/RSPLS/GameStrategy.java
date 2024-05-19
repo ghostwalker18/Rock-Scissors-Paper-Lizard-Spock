@@ -3,6 +3,8 @@ package com.ghostwalker18.RSPLS;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Map;
+
 import androidx.annotation.NonNull;
 
 public abstract class GameStrategy implements View.OnClickListener {
@@ -13,13 +15,16 @@ public abstract class GameStrategy implements View.OnClickListener {
    protected final TextView playerTwoScoreTextView;
    protected enum Result{
       Lost, Draw, Won
-   }
-   protected int[][] gameMatrix = new int[][]{
-           {0, 1, -1, 1, -1},
-           {-1, 0, 1, 1, -1},
-           {1, -1, 0, -1, 1},
-           {-1, -1, 1, 0, 1},
-           {1, 1, -1, -1, 0}
+   };
+   protected Result[][] gameMatrix = new Result[][]{
+           {Result.Draw, Result.Won, Result.Lost, Result.Won, Result.Lost},
+           {Result.Lost, Result.Draw, Result.Won, Result.Won, Result.Lost},
+           {Result.Won, Result.Lost, Result.Draw, Result.Lost, Result.Won},
+           {Result.Lost, Result.Lost, Result.Won, Result.Draw, Result.Won},
+           {Result.Won, Result.Won, Result.Lost, Result.Lost, Result.Draw}
+   };
+   protected int[] stepToLogo = new int[]{
+           R.drawable.stone, R.drawable.scissors, R.drawable.paper, R.drawable.lizard, R.drawable.spok
    };
 
    public GameStrategy(@NonNull MainActivity context){
@@ -33,4 +38,8 @@ public abstract class GameStrategy implements View.OnClickListener {
    }
 
    public abstract void restart();
+
+   public abstract String getName();
+
+   public abstract int[] getPlayersNamesIds();
 }

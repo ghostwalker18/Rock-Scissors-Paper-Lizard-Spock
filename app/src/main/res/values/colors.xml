@@ -10,4 +10,6 @@
     <color name="navy">#004077</color>
     <color name="blue">#5967B2</color>
     <color name="light_blue">#5F8BC6</color>
+    <color name="player1_color">#49DA33</color>
+    <color name="player2_color">#B93114</color>
 </resources>

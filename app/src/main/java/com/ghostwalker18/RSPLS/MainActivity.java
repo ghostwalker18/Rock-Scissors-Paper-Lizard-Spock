@@ -2,6 +2,7 @@ package com.ghostwalker18.RSPLS;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences prefs;
     private GameStrategy gameStrategy;
     private EndGameFragment endGameFragment = null;
+    private RoundInfoFragment roundInfoFragment = null;
 
     private Toast notification = null;
 
@@ -31,11 +33,16 @@ public class MainActivity extends AppCompatActivity
 
         gameStrategy = getStrategy(prefs);
         registerStrategy(gameStrategy);
+        roundInfoFragment = new RoundInfoFragment(gameStrategy);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.roundInfoContainer, roundInfoFragment)
+                .commit();
         endGameFragment = (EndGameFragment) getSupportFragmentManager().findFragmentById(R.id.gameContainer);
         if(endGameFragment != null){
             findViewById(R.id.gameField).setVisibility(View.GONE);
@@ -80,6 +87,7 @@ public class MainActivity extends AppCompatActivity
                 gameStrategy = getStrategy(prefs);
                 registerStrategy(gameStrategy);
         }
+        roundInfoFragment = new RoundInfoFragment(gameStrategy);
     }
 
     private void registerStrategy(GameStrategy gameStrategy){
@@ -111,11 +119,12 @@ public class MainActivity extends AppCompatActivity
         args.putInt("playerTwoScore", playerTwoScore);
         endGameFragment = new EndGameFragment();
         endGameFragment.setArguments(args);
+        findViewById(R.id.gameField).setVisibility(View.GONE);
         getSupportFragmentManager()
                 .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .add(R.id.gameContainer, endGameFragment)
                 .commit();
-        findViewById(R.id.gameField).setVisibility(View.GONE);
     }
 
     public void showRoundWinner(CharSequence message){
@@ -125,6 +134,20 @@ public class MainActivity extends AppCompatActivity
         notification.show();
     }
 
+    public void showCurrentStep(int id){
+        roundInfoFragment.setCurrentStep(id);
+    }
+    public void setPlayerOneFigure(int id){
+        roundInfoFragment.setPlayerOneFigure(id);
+    }
+
+    public void setPlayerTwoFigure(int id){
+        roundInfoFragment.setPlayerTwoFigure(id);
+    }
+
+    public void showFigures(){
+        roundInfoFragment.showFigures();
+    }
     @Override
     public void onNavigationButtonClicked(String action) {
         switch (action){
@@ -136,8 +159,9 @@ public class MainActivity extends AppCompatActivity
                 gameStrategy.restart();
                 getSupportFragmentManager()
                         .beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                         .remove(endGameFragment)
-                        .commit();
+                        .commitNow();
                 findViewById(R.id.gameField).setVisibility(View.VISIBLE);
                 break;
         }
