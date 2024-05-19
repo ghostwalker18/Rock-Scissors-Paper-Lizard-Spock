@@ -8,9 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -23,9 +20,20 @@ public class RoundInfoFragment extends Fragment {
     private int currentStepCounter = 0;
     private View view;
 
-    public RoundInfoFragment(GameStrategy strategy) {
-        gameMode = strategy.getName();
-        playerOneId = strategy.getPlayersNamesIds()[0];
+    public static RoundInfoFragment newInstance(GameStrategy strategy){
+        Bundle args = new Bundle();
+        args.putString("gameMode", strategy.getName());
+        args.putInt("playerOneId", strategy.getPlayersNamesIds()[0]);
+        RoundInfoFragment f = new RoundInfoFragment();
+        f.setArguments(args);
+        return f;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        gameMode = getArguments().getString("gameMode");
+        playerOneId = getArguments().getInt("playerOneId");
     }
 
     @Override

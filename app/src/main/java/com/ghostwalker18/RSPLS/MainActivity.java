@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
 
         gameStrategy = getStrategy(prefs);
         registerStrategy(gameStrategy);
-        roundInfoFragment = new RoundInfoFragment(gameStrategy);
+        roundInfoFragment = RoundInfoFragment.newInstance(gameStrategy);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity
                 gameStrategy = getStrategy(prefs);
                 registerStrategy(gameStrategy);
         }
-        roundInfoFragment = new RoundInfoFragment(gameStrategy);
+        roundInfoFragment = RoundInfoFragment.newInstance(gameStrategy);
     }
 
     private void registerStrategy(GameStrategy gameStrategy){
