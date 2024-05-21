@@ -23,7 +23,7 @@ public class TwoPlayersRemoteStrategy extends GameStrategy {
    }
 
    @Override
-   public void onClick(View v) {
-
+   public void onClick(View view) {
+      super.onClick(view);
    }
 }

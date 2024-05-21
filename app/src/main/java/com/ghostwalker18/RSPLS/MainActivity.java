@@ -7,6 +7,7 @@ import androidx.preference.PreferenceManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -131,7 +132,8 @@ public class MainActivity extends AppCompatActivity
         if(notification != null)
             notification.cancel();
         notification = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
-        notification.show();
+        notification.setGravity(Gravity.BOTTOM, 0, 0);
+        //notification.show();
     }
 
     public void showCurrentStep(int id){

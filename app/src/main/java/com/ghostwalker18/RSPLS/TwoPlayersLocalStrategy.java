@@ -37,6 +37,7 @@ public class TwoPlayersLocalStrategy extends GameStrategy {
 
    @Override
    public void onClick(View view) {
+      super.onClick(view);
       stepCounter++;
       int step = 0;
       CharSequence message = "";

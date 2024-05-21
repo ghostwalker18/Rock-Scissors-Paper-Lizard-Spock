@@ -34,6 +34,7 @@ public class EndGameFragment extends Fragment implements View.OnClickListener {
    public interface OnNavigationButtonClickListener{
       public void onNavigationButtonClicked(String action);
    }
+
    @Override
    public void onCreate(@Nullable Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);

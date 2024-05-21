@@ -1,6 +1,10 @@
 package com.ghostwalker18.RSPLS;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.util.Map;
@@ -31,6 +35,14 @@ public abstract class GameStrategy implements View.OnClickListener {
       this.context = context;
       playerOneScoreTextView = context.findViewById(R.id.playerScoreTextView);
       playerTwoScoreTextView = context.findViewById(R.id.computerScoreTextView);
+   }
+
+   @Override
+   public void onClick(View view){
+      view.clearAnimation();
+      AnimatorSet animation = (AnimatorSet) AnimatorInflater.loadAnimator(context, R.animator.button_pressed);
+      animation.setTarget(view);
+      animation.start();
    }
 
    public void setStepsLimit(int stepsLimit){

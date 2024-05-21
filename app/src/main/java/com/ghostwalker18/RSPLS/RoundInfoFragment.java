@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class RoundInfoFragment extends Fragment {
-
     private String gameMode;
     private int playerOneId;
     private int[] colors = new int[]{R.color.player1_color, R.color.player2_color};
@@ -67,6 +66,7 @@ public class RoundInfoFragment extends Fragment {
         playerTwoImageView.setVisibility(View.INVISIBLE);
         playerTwoImageView.setImageResource(figureId);
     }
+
     public void showFigures(){
         Animation fadeout = AnimationUtils.loadAnimation(getContext(), R.anim.fadeout);
         ImageView playerOneImageView = view.findViewById(R.id.player_one_figure);

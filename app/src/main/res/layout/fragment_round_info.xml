@@ -3,27 +3,68 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
+    <Space
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/game_mod"/>
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
         <TextView
+            android:id="@+id/game_mod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/current_step_info"/>
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_medium" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/current_player"/>
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:text="@string/current_step_info"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/current_player"
+            android:layout_weight="1"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <LinearLayout
@@ -34,32 +75,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_weight="2"
             android:text="@string/player_one_figure"/>
 
         <ImageView
+            android:layout_margin="5dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:id="@+id/player_one_figure"
-            android:alpha="1"
-            android:layout_gravity="right"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:alpha="1"/>
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/player_two_figure"
+            android:alpha="1"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:text="@string/player_two_figure"/>
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/player_two_figure"
-            android:alpha="1"
-            android:layout_gravity="right"/>
     </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 </LinearLayout>

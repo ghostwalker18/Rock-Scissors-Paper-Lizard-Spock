@@ -34,6 +34,7 @@ public class OnePlayerStrategy extends GameStrategy {
 
     @Override
     public void onClick(View view) {
+        super.onClick(view);
         int playerStep = 0;
         CharSequence message = "";
 
