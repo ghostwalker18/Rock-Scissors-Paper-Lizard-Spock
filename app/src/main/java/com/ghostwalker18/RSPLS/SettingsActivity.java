@@ -1,6 +1,5 @@
 package com.ghostwalker18.RSPLS;
 
-
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;

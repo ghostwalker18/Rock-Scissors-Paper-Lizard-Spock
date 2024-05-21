@@ -11,12 +11,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class EndGameFragment extends Fragment implements View.OnClickListener {
-
    private String winner;
    private int playerOneScore;
    private int playerTwoScore;
    //Parent activity that must implements OnNavigationButtonClickedListener interface
    private OnNavigationButtonClickListener mListener;
+
+   public static EndGameFragment newInstance(int winnerStringId, int playerOneScore, int playerTwoScore){
+      Bundle args = new Bundle();
+      args.putInt("winner", winnerStringId);
+      args.putInt("playerOneScore", playerOneScore);
+      args.putInt("playerTwoScore", playerTwoScore);
+      EndGameFragment f = new EndGameFragment();
+      f.setArguments(args);
+      return f;
+   }
 
    //Delegation of processing of button`s clicks to parent activity
    @Override

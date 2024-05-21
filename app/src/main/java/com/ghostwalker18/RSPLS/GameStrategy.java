@@ -2,24 +2,15 @@ package com.ghostwalker18.RSPLS;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.os.VibratorManager;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-
-import java.util.Map;
-
 import androidx.annotation.NonNull;
-
 import static androidx.core.content.ContextCompat.getSystemService;
 
 public abstract class GameStrategy implements View.OnClickListener {
-
    public enum AUDIOMODE{
       SILENT, VIBRO, SOUND
    }
@@ -52,6 +43,24 @@ public abstract class GameStrategy implements View.OnClickListener {
       playerTwoScoreTextView = context.findViewById(R.id.computerScoreTextView);
    }
 
+   protected void gameoverPerfomance(boolean isWin){
+      int songId;
+      if(isWin){
+         songId = R.raw.win_sound;
+      }
+      else{
+         songId = R.raw.fail_sound;
+      }
+      switch (audioMode){
+         case SOUND:
+            if(mediaPlayer != null)
+               mediaPlayer.release();
+            mediaPlayer = MediaPlayer.create(context, songId);
+            mediaPlayer.start();
+            break;
+      }
+   }
+
    @Override
    public void onClick(View view){
       view.clearAnimation();
@@ -60,6 +69,8 @@ public abstract class GameStrategy implements View.OnClickListener {
       animation.start();
       switch (audioMode){
          case SOUND:
+            if(mediaPlayer != null)
+               mediaPlayer.release();
             mediaPlayer = MediaPlayer.create(context, R.raw.button_click_sound);
             mediaPlayer.start();
             break;
@@ -69,9 +80,11 @@ public abstract class GameStrategy implements View.OnClickListener {
             break;
       }
    }
+
    public void setAudioMode(AUDIOMODE mode){
       this.audioMode = mode;
    }
+
    public void setStepsLimit(int stepsLimit){
       this.stepsLimit = stepsLimit;
    }

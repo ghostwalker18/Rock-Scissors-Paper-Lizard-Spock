@@ -1,7 +1,6 @@
 package com.ghostwalker18.RSPLS;
 
 import android.view.View;
-
 import androidx.annotation.NonNull;
 
 public class TwoPlayersLocalStrategy extends GameStrategy {
@@ -99,6 +98,7 @@ public class TwoPlayersLocalStrategy extends GameStrategy {
 
          if(playerOneScore == stepsLimit || playerTwoScore == stepsLimit){
             winnerStringId = (playerOneScore > playerTwoScore) ?  R.string.player_one : R.string.player_two;
+            gameoverPerfomance(true);
             context.showWinner(winnerStringId, playerOneScore, playerTwoScore);
          };
       }

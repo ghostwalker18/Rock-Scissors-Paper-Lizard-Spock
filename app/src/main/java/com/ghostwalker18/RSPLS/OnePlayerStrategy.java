@@ -1,16 +1,13 @@
 package com.ghostwalker18.RSPLS;
 
-import android.os.SystemClock;
 import android.view.View;
-import android.widget.Toast;
 import java.util.Random;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 public class OnePlayerStrategy extends GameStrategy {
     private Random AI = new Random();
     private int playerScore = 0;
     private int computerScore = 0;
+
     public OnePlayerStrategy(MainActivity context) {
         super(context);
     }
@@ -19,6 +16,7 @@ public class OnePlayerStrategy extends GameStrategy {
     public String getName(){
         return context.getResources().getStringArray(R.array.game_mode_entries)[0];
     }
+
     @Override
     public int[] getPlayersNamesIds(){
         return new int[]{ R.string.you, R.string.computer};
@@ -83,7 +81,15 @@ public class OnePlayerStrategy extends GameStrategy {
         playerTwoScoreTextView.setText(String.valueOf(computerScore));
 
         if(playerScore == stepsLimit || computerScore == stepsLimit){
-            winnerStringId = (playerScore > computerScore) ?  R.string.you : R.string.computer;
+            if(playerScore > computerScore){
+                winnerStringId = R.string.you;
+                gameoverPerfomance(true);
+            }
+            else
+            {
+                winnerStringId = R.string.computer;
+                gameoverPerfomance(false);
+            }
             context.showWinner(winnerStringId, playerScore, computerScore);
         };
     }

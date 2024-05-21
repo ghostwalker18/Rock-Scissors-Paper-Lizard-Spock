@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity
     private GameStrategy gameStrategy;
     private EndGameFragment endGameFragment = null;
     private RoundInfoFragment roundInfoFragment = null;
-
     private Toast notification = null;
 
     @Override
@@ -124,12 +123,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void showWinner(int winnerStringId, int playerOneScore, int playerTwoScore){
-        Bundle args = new Bundle();
-        args.putInt("winner", winnerStringId);
-        args.putInt("playerOneScore", playerOneScore);
-        args.putInt("playerTwoScore", playerTwoScore);
-        endGameFragment = new EndGameFragment();
-        endGameFragment.setArguments(args);
+        endGameFragment = EndGameFragment.newInstance(winnerStringId, playerOneScore, playerTwoScore);
         findViewById(R.id.gameField).setVisibility(View.GONE);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -149,6 +143,7 @@ public class MainActivity extends AppCompatActivity
     public void showCurrentStep(int id){
         roundInfoFragment.setCurrentStep(id);
     }
+
     public void setPlayerOneFigure(int id){
         roundInfoFragment.setPlayerOneFigure(id);
     }
@@ -160,6 +155,7 @@ public class MainActivity extends AppCompatActivity
     public void showFigures(){
         roundInfoFragment.showFigures();
     }
+
     @Override
     public void onNavigationButtonClicked(String action) {
         switch (action){
