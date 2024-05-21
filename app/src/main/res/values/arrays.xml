@@ -36,6 +36,12 @@
         <item>Light</item>
     </string-array>
 
+    <string-array name="sound_entries">
+        <item>Sound</item>
+        <item>Vibration</item>
+        <item>Silent</item>
+    </string-array>
+
     <string-array name="language_values">
         <item>system</item>
         <item>en</item>
@@ -46,5 +52,11 @@
         <item>system</item>
         <item>night</item>
         <item>day</item>
+    </string-array>
+
+    <string-array name="sound_values">
+        <item>sound</item>
+        <item>vibro</item>
+        <item>silent</item>
     </string-array>
 </resources>

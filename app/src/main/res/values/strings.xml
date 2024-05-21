@@ -25,4 +25,5 @@
     <string name="current_step_info">Current step now:</string>
     <string name="player_one_figure">Player1\'s chosen figure</string>
     <string name="player_two_figure">Player2\'s chosen figure</string>
+    <string name="option_sound">Sound</string>
 </resources>

@@ -78,16 +78,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        switch (key){
-            case "pointsNumber":
-                int stepsLimit = Integer.parseInt(sharedPreferences.getString(key, "3"));
-                gameStrategy.setStepsLimit(stepsLimit);
-                gameStrategy.restart();
-                break;
-            case "gameMode":
-                gameStrategy = getStrategy(prefs);
-                registerStrategy(gameStrategy);
-        }
+        gameStrategy = getStrategy(prefs);
+        gameStrategy.restart();
+        registerStrategy(gameStrategy);
         roundInfoFragment = RoundInfoFragment.newInstance(gameStrategy);
     }
 
@@ -100,17 +93,34 @@ public class MainActivity extends AppCompatActivity
     }
 
     private GameStrategy getStrategy(SharedPreferences prefs){
+        GameStrategy strategy = null;
         String gameMode = prefs.getString("gameMode", "AI");
         switch (gameMode){
             case "AI":
-                return new OnePlayerStrategy(MainActivity.this);
+                strategy = new OnePlayerStrategy(MainActivity.this);
+                break;
             case "local":
-                return new TwoPlayersLocalStrategy(MainActivity.this);
+                strategy = new TwoPlayersLocalStrategy(MainActivity.this);
+                break;
             case "BT":
-                return new TwoPlayersRemoteStrategy(MainActivity.this);
-            default:
-                return null;
+                strategy =  new TwoPlayersRemoteStrategy(MainActivity.this);
+                break;
         }
+        String soundMode = prefs.getString("soundMode", "silent");
+        switch (soundMode){
+            case "silent":
+                strategy.setAudioMode(GameStrategy.AUDIOMODE.SILENT);
+                break;
+            case "sound":
+                strategy.setAudioMode(GameStrategy.AUDIOMODE.SOUND);
+                break;
+            case "vibro":
+                strategy.setAudioMode(GameStrategy.AUDIOMODE.VIBRO);
+                break;
+        };
+        int stepsLimit = Integer.parseInt(prefs.getString("pointsNumber", "3"));
+        strategy.setStepsLimit(stepsLimit);
+        return strategy;
     }
 
     public void showWinner(int winnerStringId, int playerOneScore, int playerTwoScore){

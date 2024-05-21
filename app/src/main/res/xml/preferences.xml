@@ -33,5 +33,12 @@
             app:title="@string/option_theme"
             app:entries="@array/theme_entries"
             app:entryValues="@array/theme_values"/>
+
+        <ListPreference
+            app:defaultValue="silent"
+            app:key="soundMode"
+            app:title="@string/option_sound"
+            app:entries="@array/sound_entries"
+            app:entryValues="@array/sound_values"/>
     </PreferenceCategory>
 </PreferenceScreen>

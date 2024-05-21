@@ -25,4 +25,5 @@
     <string name="current_step_info">Текущий ход: </string>
     <string name="player_one_figure">Фигура игрока 1</string>
     <string name="player_two_figure">Фигура игрока 2</string>
+    <string name="option_sound">Звук</string>
 </resources>

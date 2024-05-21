@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.ghostwalker18.RSPLS"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 5
         versionName "2.2.0"

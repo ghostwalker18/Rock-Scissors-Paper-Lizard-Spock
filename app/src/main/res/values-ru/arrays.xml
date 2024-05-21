@@ -24,4 +24,10 @@
         <item>Темная</item>
         <item>Светлая</item>
     </string-array>
+
+    <string-array name="sound_entries">
+        <item>Со звуком</item>
+        <item>Вибрация</item>
+        <item>Без звука</item>
+    </string-array>
 </resources>
